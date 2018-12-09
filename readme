@@ -1,0 +1,23 @@
+1,在原来的基础上还要安装python连接mysql的驱动 pip install mysqlclient 数据库的配置信息放在settings文件里 自行修改到你需要的数据库
+2,运行单个的爬虫 scrapy crawl 爬虫的名字(class下的name) 例如 scrapy crwal sichuan
+3,一次运行所有的爬虫 scrapy crawlall 运行了以后 你可以不停的select count(*) from gov_notice
+4,目前的项目大部分是我同事写的, 有问题的我已经已注释的形式表明在爬虫类的第一行 一般是爬取重复 演示一般不是问题 我会让他稍后根据问题所在改好
+5,如果爬虫类的第一行没有注释,说明我还没有验证
+6,中断停止爬虫 ctrl + c 第一次按是缓冲的停止,爬虫会把还在队列里的任务给爬完再停止, 连续按两次是立刻停止,缓冲区里的任务会丢失
+7,你自己验收的时候可以一个一个爬虫的运行, 然后清空数据,再运行下一个爬虫
+
+
+建表语句:
+
+DROP TABLE IF EXISTS `gov_notice`;
+CREATE TABLE `gov_notice` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `notice_title` varchar(255) DEFAULT NULL,
+  `notice_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `detail_url` varchar(255) DEFAULT NULL,
+  `area_code` varchar(255) DEFAULT NULL,
+  `content_type` varchar(255) DEFAULT NULL,
+  `publish_id` int(11) DEFAULT NULL,
+  `thing_type_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13884 DEFAULT CHARSET=utf8;
