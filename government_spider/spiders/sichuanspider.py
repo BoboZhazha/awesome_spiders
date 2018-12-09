@@ -7,6 +7,7 @@ import re
 
 # 数据库查看文件是有10倍的重复
 class SiChuanSpider(scrapy.Spider):
+    # 这里的名字
     name = "sichuan"
     def start_requests(self):
         yield scrapy.Request(url='http://www.scggzy.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=project&informationType=&industryType=&page=1')
