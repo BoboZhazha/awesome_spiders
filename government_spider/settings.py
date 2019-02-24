@@ -92,11 +92,12 @@ ITEM_PIPELINES = {
 
 # LOG_FILE="scrapy.log"
 
-MYSQL_HOST = "127.0.0.1"
-MYSQL_DBNAME = "gov_spider"
+MYSQL_HOST = "129.28.122.49"
+MYSQL_DB = "gov"
 MYSQL_USER = "root"
-MYSQL_PASSWORD = "123456"
-
+MYSQL_PASSWD = "xksw123..."
+MYSQL_PORT = 3306
+MYSQL_CHARSET = 'utf8'
 
 SQL_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 SQL_DATE_FORMAT = "%Y-%m-%d"
