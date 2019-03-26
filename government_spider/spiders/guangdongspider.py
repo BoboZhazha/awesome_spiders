@@ -4,7 +4,7 @@ from government_spider.items import GovernmentSpiderItem
 import json
 
 
-# 验证的时候官网在维护
+# 2019-02-25 爬取有问题
 class GuangDongSpider(scrapy.Spider):
     name = "guangdong"
     k = {"30091": "03", "30011": "01", "200122": "02"}
@@ -57,5 +57,5 @@ class GuangDongSpider(scrapy.Spider):
         for i in range(2, max_page+1):
             for w in self.k:
                 next_url = 'http://www.gdggzy.org.cn/prip-portal-web/main/viewList.do'
-                formdata = {"currPage":str(i), "typeId":w , "pageSize":"20"}
-                yield scrapy.FormRequest(url=next_url, formdata=formdata, dont_filter=False, meta={"ss":w})
+                formdata = {"currPage":str(i), "typeId": w , "pageSize":"20"}
+                yield scrapy.FormRequest(url=next_url, formdata=formdata, dont_filter=False, meta={"ss": w})

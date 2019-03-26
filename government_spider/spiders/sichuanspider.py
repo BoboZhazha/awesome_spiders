@@ -10,10 +10,10 @@ class SiChuanSpider(scrapy.Spider):
     # 这里的名字
     name = "sichuan"
     def start_requests(self):
-        yield scrapy.Request(url='http://www.scggzy.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=project&informationType=&industryType=&page=1')
-        yield scrapy.Request(url='http://www.scggzy.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=land&informationType=&industryType=&page=1')
-        yield scrapy.Request(url='http://www.scggzy.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=purchase&informationType=&industryType=&page=1')
-        yield scrapy.Request(url='http://www.scggzy.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=othertrade&informationType=&industryType=&page=1')
+        yield scrapy.Request(url='http://ggzyjy.sc.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=project&informationType=&industryType=&page=1')
+        yield scrapy.Request(url='http://ggzyjy.sc.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=land&informationType=&industryType=&page=1')
+        yield scrapy.Request(url='http://ggzyjy.sc.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=purchase&informationType=&industryType=&page=1')
+        yield scrapy.Request(url='http://ggzyjy.sc.gov.cn/Info/GetInfoListNew?keywords=&times=5&timesStart=&timesEnd=&province=&area=&businessType=othertrade&informationType=&industryType=&page=1')
 
     def parse(self, response):
         max_page = json.loads(response.text)["pageCount"]
@@ -25,10 +25,10 @@ class SiChuanSpider(scrapy.Spider):
 
             item["title"] = data["Title"]
             item["date"] = data["CreateDateStr"]
-            item["detail_url"] = "http://www.scggzy.gov.cn" + str(data["Link"])
+            item["detail_url"] = "http://ggzyjy.sc.gov.cn" + str(data["Link"])
             item["area_code"] = "SICHUAN"
-            item["publish_id"] = "181818"
-            item["thing_id"] = "42"
+            item["510000"] = "181818"
+            item["thing_id"] = "88"
             if "project" in response.url:
                 item["content_type"] = "02"
             elif "purchase" in response.url:
@@ -40,6 +40,6 @@ class SiChuanSpider(scrapy.Spider):
             yield item
 
         for i in range(2, max_page+1):
-            next_url = re.sub(r'page=[1-9]\d*', 'page=' + str(i) , response.url)
+            next_url = re.sub(r'page=[1-9]\d*', 'page=' + str(i), response.url)
             yield scrapy.Request(next_url)
 

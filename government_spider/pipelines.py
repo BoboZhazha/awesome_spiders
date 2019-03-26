@@ -71,7 +71,7 @@ class MysqlTwistedPipline(object):
         cursor.execute(insert_sql, (
         item['title'], item['date'], item['detail_url'], item['area_code'], item['content_type'], item['publish_id'],
         item['thing_id']))
-        # 不需要commit()
+        # commit()
 
 
 

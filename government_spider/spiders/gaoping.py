@@ -4,6 +4,7 @@ from government_spider.items import GovernmentSpiderItem
 import re
 
 # w 地区:高风
+# 2019-02-25 发现这个网站是屏蔽状态, 无法爬取
 class GaopingSpider(scrapy.Spider):
     name = "gaoping"
     base_url = 'http://www.gpzfcg.gov.cn/Article/ShowClass.asp?ClassID=13'

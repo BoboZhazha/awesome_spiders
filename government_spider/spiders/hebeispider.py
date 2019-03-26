@@ -4,6 +4,7 @@ from government_spider.items import GovernmentSpiderItem
 import scrapy
 import json
 
+# 异步下死锁问题
 class HeBeiSpider(scrapy.Spider):
     name = "hebei"
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36', 'Accept': 'application/json, text/javascript, */*; q=0.01'}
@@ -32,9 +33,9 @@ class HeBeiSpider(scrapy.Spider):
             hbitem["title"] = data["title"]
             hbitem["date"] = data["showdate"]
             hbitem["detail_url"] = "http://www.hebpr.cn" + data["linkurl"]
-            hbitem["area_code"] = "HEBEI"
-            hbitem["publish_id"] = "181818"
-            hbitem["thing_id"] = "42"
+            hbitem["area_code"] = "河北"
+            hbitem["publish_id"] = "130000"
+            hbitem["thing_id"] = "88"
             if "003005001" in hbitem["detail_url"]:
                 hbitem["content_type"] = "01"
             elif "003005002" in hbitem["detail_url"]:
