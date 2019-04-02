@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import scrapy
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import re
 
 class NeiMengGuSpider(scrapy.Spider):
@@ -16,8 +16,8 @@ class NeiMengGuSpider(scrapy.Spider):
     def parse(self, response):
         contents = response.xpath('//table//tr')[1:]
         for content in contents:
-            title = content.xpath('.//td[3]/a/text()').extract()
-            date = content.xpath('.//td[4]/text()').extract()
+            title = content.xpath('.//td[3]/a/text()').extract_first().strip()
+            date = content.xpath('.//td[4]/text()').extract_first().strip()
             short_url = content.xpath('.//td[3]/a/@href').extract_first()
             detail_url = response.urljoin(short_url)
             if "jsgcZbgg" in response.url:
@@ -28,7 +28,7 @@ class NeiMengGuSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="NEIMENGGU", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(notice_title=title, notice_date=date, detail_url=detail_url,area_code="内蒙古", content_type=content_type, publish_id= "150000", thing_type_id="88")
 
 
         max_page = response.xpath('//div[@class="page"]/div[@class="mmggxlh"]/a/text()')[-2].extract()

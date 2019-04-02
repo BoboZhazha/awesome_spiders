@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import scrapy
 import re
 
@@ -21,8 +21,8 @@ class ShaanXiSpider(scrapy.Spider):
         # max_page = 3
         contents = response.xpath('//ul[@class="ewb-list"]/li')
         for content in contents:
-            title = content.xpath('.//a[@class="ewb-list-name ewb-otw"]/text()').extract_first()
-            date =  content.xpath('.//span[@class="ewb-list-date"]/text()').extract_first()
+            title = content.xpath('.//a[@class="ewb-list-name ewb-otw"]/text()').extract_first().strip()
+            date =  content.xpath('.//span[@class="ewb-list-date"]/text()').extract_first().strip()
             short_url = content.xpath('.//a[@class="ewb-list-name ewb-otw"]/@href').extract_first()
             detail_url = response.urljoin(short_url)
             if "001001001" in response.url:
@@ -33,7 +33,7 @@ class ShaanXiSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="SHAANXI", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(notice_title=title,notice_date=date, detail_url=detail_url,area_code="陕西", content_type=content_type, publish_id= "610000", thing_type_id="88")
         for page in range(2, int(max_page)+1):
             next_url = re.sub(r'[1-9]\d*.html', str(page)+'.html', response.url)
             yield scrapy.Request(url=next_url)

@@ -1,6 +1,6 @@
 # -*-coding:utf-8 -*-
 import scrapy
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import json
 
 
@@ -35,7 +35,7 @@ class GuangDongSpider(scrapy.Spider):
 
         contents = response.xpath('//div[@class="list_box"]/ul')
         for content in contents:
-            item = GovernmentSpiderItem()
+            item = GovSpiderItem()
             item['title'] = content.xpath('.//li[@class="l"]/a/@title').extract_first()
             item['date'] = contents.xpath('.//li[@class="r"]/text()').extract_first()
             short_url = content.xpath('.//li[@class="l"]/a/@href').extract_first()

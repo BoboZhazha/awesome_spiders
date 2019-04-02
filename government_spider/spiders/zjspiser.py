@@ -2,7 +2,7 @@
 
 import scrapy
 import logging
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import scrapy
 class ZhejiangSpider(scrapy.Spider):
     # 浙江的问题是入库以后发现有大量重复数据 日期和title稍微做下处理
@@ -33,7 +33,7 @@ class ZhejiangSpider(scrapy.Spider):
                 content_type = "01"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="ZHEJIANG", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(title=title,date=date, detail_url=detail_url,area_code="ZHEJIANG", content_type=content_type, publish_id= "181818", thing_id="42")
 
         for page in range(2, int(max_page)+1):
             next_url = response.urljoin('?Page='+str(page))

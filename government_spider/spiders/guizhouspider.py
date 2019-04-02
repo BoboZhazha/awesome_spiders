@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import scrapy
 import re
 
@@ -20,7 +20,7 @@ class GuiZhouSpider(scrapy.Spider):
         max_page = max_page1[:index]
         contents = response.xpath('//div[@class="article_listbox"]/ul[@id="listbox"]/li')
         for content in contents:
-            title = content.xpath('.//div[@class="content_left"]/a/text()').extract_first()
+            title = content.xpath('.//div[@class="content_left"]/a/text()').extract_first().strip()
             date = content.xpath('.//div[@class="content_right"]/span/text()').extract_first()
             detail_url = content.xpath('.//div[@class="content_left"]/a/@href').extract_first()
             if "jygkjsgc" in response.url:
@@ -31,7 +31,7 @@ class GuiZhouSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="贵州", content_type=content_type, publish_id="520000", thing_id="88")
+            yield GovSpiderItem(notice_title=title,notice_date=date, detail_url=detail_url,area_code="贵州", content_type=content_type, publish_id="520000", thing_type_id="88")
         for page in range(2, int(max_page)+1):
             next_url = re.sub(r'index_[1-9]\d*', 'index_'+str(page), response.url)
             yield scrapy.Request(url=next_url)

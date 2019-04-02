@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import re
 
 
@@ -32,7 +32,7 @@ class LiaoNingSpider(scrapy.Spider):
                 content_type = "02"
             else:
                 content_type = "01"
-            yield LnItem(title=title,date=date, detail_url=detail_url,area_code="LIAONING", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(title=title,date=date, detail_url=detail_url,area_code="辽宁", content_type=content_type, publish_id= "181818", thing_id="42")
 
 
         for i in range(2, int(max_page)+1):

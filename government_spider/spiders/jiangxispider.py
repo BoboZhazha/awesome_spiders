@@ -1,10 +1,10 @@
 # -*-coding:utf-8 -*-
 
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import scrapy
 import re
 
-
+# 有问题, 没有进入item
 class JiangXiSpider(scrapy.Spider):
     name = "jiangxi"
     def start_requests(self):
@@ -30,7 +30,7 @@ class JiangXiSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="JIANGXI", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(notice_title=title, notice_date=date, detail_url=detail_url, area_code="江西", content_type=content_type, publish_id= "360000", thing_type_id="88")
 
         for page in range(2, int(max_page)+1):
             next_url = re.sub(r'[1-9]\d*.html', str(page)+".html", response.url)

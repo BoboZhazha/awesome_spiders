@@ -1,7 +1,7 @@
 # -*-coding:utf-8 -*-
 
 import scrapy
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import json
 import re
 
@@ -20,15 +20,15 @@ class SiChuanSpider(scrapy.Spider):
 
         datas = json.loads(response.text)["data"]
         datas1 = json.loads(datas)
-        item = GovernmentSpiderItem()
+        item = GovSpiderItem()
         for data in datas1:
 
             item["title"] = data["Title"]
             item["date"] = data["CreateDateStr"]
             item["detail_url"] = "http://ggzyjy.sc.gov.cn" + str(data["Link"])
-            item["area_code"] = "SICHUAN"
-            item["510000"] = "181818"
-            item["thing_id"] = "88"
+            item["area_code"] = "四川"
+            item["publish_id"] = "510000"
+            item["thing_type_id"] = "42"
             if "project" in response.url:
                 item["content_type"] = "02"
             elif "purchase" in response.url:

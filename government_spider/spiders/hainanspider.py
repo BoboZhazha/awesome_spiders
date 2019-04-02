@@ -1,7 +1,7 @@
 # -*-coding:utf-8 -*-
 
 import scrapy
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import re
 
 # 这个因为detail为none报错, 需要重新验证一下
@@ -27,7 +27,7 @@ class HaiNanSpider(scrapy.Spider):
                 content_type = "01"
             else:
                 content_type = "03"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="海南", content_type=content_type, publish_id= "150303", thing_id="88")
+            yield GovSpiderItem(notice_title=title, notice_date=date, detail_url=detail_url, area_code="海南", content_type=content_type, publish_id= "150303", thing_type_id="88")
 
         for i in range(2, int(max_page)+1):
             next_url = re.sub(r'index_[1-9]\d*', "index_" + str(i), response.url)

@@ -66,7 +66,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'government_spider.pipelines.MysqlTwistedPipline': 300,
+   'government_spider.pipelines.ElasticsearchPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -91,16 +91,17 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # LOG_FILE="scrapy.log"
+# LOG_LEVEL = 'INFO'
 
 # MYSQL_HOST = "129.28.122.49"
 # MYSQL_PASSWD = "xksw123..."
-
-MYSQL_HOST = "192.168.56.3"
-MYSQL_PASSWD = "123456"
-MYSQL_DB = "gov"
-MYSQL_USER = "root"
-MYSQL_PORT = 3306
-MYSQL_CHARSET = 'utf8'
+#
+# MYSQL_HOST = "192.168.56.3"
+# MYSQL_PASSWD = "123456"
+# MYSQL_DB = "gov"
+# MYSQL_USER = "root"
+# MYSQL_PORT = 3306
+# MYSQL_CHARSET = 'utf8'
 
 SQL_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 SQL_DATE_FORMAT = "%Y-%m-%d"

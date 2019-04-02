@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import scrapy
 import json
 
@@ -29,13 +29,13 @@ class HeBeiSpider(scrapy.Spider):
         max_counts = json.loads(response.text)["result"]["totalcount"]
         datas = json.loads(response.text)["result"]["records"]
         for data in datas:
-            hbitem = GovernmentSpiderItem()
-            hbitem["title"] = data["title"]
-            hbitem["date"] = data["showdate"]
+            hbitem = GovSpiderItem()
+            hbitem["notice_title"] = data["title"]
+            hbitem["notice_date"] = data["showdate"]
             hbitem["detail_url"] = "http://www.hebpr.cn" + data["linkurl"]
             hbitem["area_code"] = "河北"
             hbitem["publish_id"] = "130000"
-            hbitem["thing_id"] = "88"
+            hbitem["thing_type_id"] = "88"
             if "003005001" in hbitem["detail_url"]:
                 hbitem["content_type"] = "01"
             elif "003005002" in hbitem["detail_url"]:

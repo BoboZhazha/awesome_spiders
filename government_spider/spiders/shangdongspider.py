@@ -2,7 +2,7 @@
 
 import scrapy
 import re
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 
 class ShangDongSpider(scrapy.Spider):
     # 完成
@@ -32,7 +32,7 @@ class ShangDongSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="SHANGDONG", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(notice_title=title,notice_date=date, detail_url=detail_url,area_code="山东", content_type=content_type, publish_id= "370000", thing_type_id="88")
         for page in range(2, int(max_page)+1):
             next_url = re.sub(r'queryContent_\d', "queryContent_" + str(page), response.url)
 

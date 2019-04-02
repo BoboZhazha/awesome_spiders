@@ -8,20 +8,21 @@
 
 from elasticsearch_dsl import DocType, Date, Nested, Boolean, analyzer, Completion, Keyword, Text, Integer
 from elasticsearch_dsl.connections import connections
-connections.create_connection(hosts=["http://192.168.56.2:9200/"])
+connections.create_connection(hosts=["http://129.28.122.49:9200/"])
 
 
 # 注意集成DocType
 class ArticleType(DocType):
-    title = Text(analyzer="ik_max_word")
-    # 不需要分词,定义成keyword
+    notice_title = Text(analyzer="ik_max_word")
+    notice_date = Date()
     detail_url = Keyword()
-    content = Text(analyzer="ik_max_word")
-    grep_time = Date()
-    location_name = Keyword()
+    area_code = Keyword()
+    content_type = Keyword()
+    publish_id = Keyword()
+    thing_type_id = Keyword()
 
     class Meta:
-        index = "jobbole"
+        index = "gov_spiders"
         doc_type = "article"
 
 

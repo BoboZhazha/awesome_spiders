@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import scrapy
 import re
 
@@ -29,7 +29,7 @@ class HunanSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovernmentSpiderItem(title=title,date=date, detail_url=detail_url,area_code="HUNAN", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(notice_title=title, notice_date=date, detail_url=detail_url,area_code="湖南", content_type=content_type, publish_id= "430000", thing_type_id="88")
         for page in range(2, int(max_page)+1):
             next_url = re.sub(r"[1-9]\d*.html", str(page)+".html", response.url)
             yield scrapy.Request(url=next_url)

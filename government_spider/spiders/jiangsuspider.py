@@ -1,9 +1,10 @@
 # -*- coding:utf-8 -*-
 
 import scrapy
-from government_spider.items import GovernmentSpiderItem
+from government_spider.items import GovSpiderItem
 import json
 
+# 这个初始请求405
 class JiangSuSpider(scrapy.Spider):
     name = "jiangsu"
 
@@ -30,12 +31,12 @@ class JiangSuSpider(scrapy.Spider):
 
         datas = json.loads(response.text)["result"]["records"]
         for data in datas:
-            item = GovernmentSpiderItem()
-            item["title"] = data["title"]
-            item["date"] = datas["infodateformat"]
-            item["area_code"] = "JIANGSU"
-            item["publish_id"] = "181818"
-            item["thing_id"] = "42"
+            item = GovSpiderItem()
+            item["notice_title"] = data["title"]
+            item["notice_date"] = datas["infodateformat"]
+            item["area_code"] = "江苏"
+            item["publish_id"] = "320000"
+            item["thing_type_id"] = "88"
             if response.meta.has_key("003001") == True:
                 item["content_type"] = "02"
             elif response.meta.has_key("003004") == True:
