@@ -35,7 +35,7 @@ class XinJiangSpider(scrapy.Spider):
                 content_type = "03"
             else:
                 content_type = "04"
-            yield GovSpiderItem(title=title,date=date, detail_url=detail_url,area_code="XINJIANG", content_type=content_type, publish_id="181818", thing_id="42")
+            yield GovSpiderItem(notice_title=title,notice_date=date, detail_url=detail_url,area_code="新疆", content_type=content_type, publish_id="650000", thing_type_id="88")
         for page in range(2, int(max_page)+1):
             next_url = response.urljoin('?Paging='+str(page))
             yield scrapy.Request(url=next_url)

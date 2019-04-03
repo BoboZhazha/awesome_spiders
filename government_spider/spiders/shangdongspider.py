@@ -4,6 +4,7 @@ import scrapy
 import re
 from government_spider.items import GovSpiderItem
 
+# 初始请求已经改变, 现在403
 class ShangDongSpider(scrapy.Spider):
     # 完成
     name = "shandong"
