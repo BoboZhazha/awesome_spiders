@@ -23,12 +23,12 @@ class SiChuanSpider(scrapy.Spider):
         item = GovSpiderItem()
         for data in datas1:
 
-            item["title"] = data["Title"]
-            item["date"] = data["CreateDateStr"]
+            item["notice_title"] = data["Title"]
+            item["notice_date"] = data["CreateDateStr"]
             item["detail_url"] = "http://ggzyjy.sc.gov.cn" + str(data["Link"])
             item["area_code"] = "四川"
             item["publish_id"] = "510000"
-            item["thing_type_id"] = "42"
+            item["thing_type_id"] = "88"
             if "project" in response.url:
                 item["content_type"] = "02"
             elif "purchase" in response.url:

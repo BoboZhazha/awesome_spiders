@@ -33,7 +33,7 @@ class ZhejiangSpider(scrapy.Spider):
                 content_type = "01"
             else:
                 content_type = "04"
-            yield GovSpiderItem(title=title,date=date, detail_url=detail_url,area_code="ZHEJIANG", content_type=content_type, publish_id= "181818", thing_id="42")
+            yield GovSpiderItem(title=title,date=date, detail_url=detail_url,area_code="浙江", content_type=content_type, publish_id= "330000", thing_type_id="88")
 
         for page in range(2, int(max_page)+1):
             next_url = response.urljoin('?Page='+str(page))

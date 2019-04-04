@@ -1,2 +1,4 @@
 scrapy>=1.4.0
+scrapy-redis
+redis
 elasticsearch-dsl==5.4.0
