@@ -1,4 +1,6 @@
 scrapy>=1.4.0
 scrapy-redis
+scrapyd
+scrapyd-client
 redis
 elasticsearch-dsl==5.4.0
