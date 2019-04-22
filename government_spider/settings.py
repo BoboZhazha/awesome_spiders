@@ -42,13 +42,8 @@ COMMANDS_MODULE = 'government_spider.commands'
 # Override the default request headers:
 
 DEFAULT_REQUEST_HEADERS = {
-  # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-  # 'Accept-Language': 'en',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.5,en;q=0.3",
     "Accept-Encoding": "gzip, deflate",
-    'Content-Length': '0',
     "Connection": "keep-alive"
 }
 
@@ -75,7 +70,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'government_spider.pipelines.ElasticsearchPipeline': 300,
+   'government_spider.pipelines.JsonPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -2,8 +2,9 @@
 import scrapy
 
 
-class ChangshanSpider(scrapy.Spider):
-    name = 'changshan'
+# 广安
+class GuanganSpider(scrapy.Spider):
+    name = 'guangan'
     allowed_domains = ['xxx.com']
     start_urls = ['http://xxx.com/']
 
