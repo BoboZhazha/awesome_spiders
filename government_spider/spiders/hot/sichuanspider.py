@@ -22,7 +22,6 @@ class SiChuanSpider(scrapy.Spider):
         datas1 = json.loads(datas)
         item = GovSpiderItem()
         for data in datas1:
-
             item["notice_title"] = data["Title"]
             item["notice_date"] = data["CreateDateStr"]
             item["detail_url"] = "http://ggzyjy.sc.gov.cn" + str(data["Link"])
