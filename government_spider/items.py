@@ -18,6 +18,7 @@ class GovSpiderItem(scrapy.Item):
     content_type = scrapy.Field()
     publish_id = scrapy.Field()
     thing_type_id = scrapy.Field()
+    source = scrapy.Field()
 
 
 

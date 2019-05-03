@@ -8,7 +8,8 @@
 
 from elasticsearch_dsl import DocType, Date, Nested, Boolean, analyzer, Completion, Keyword, Text, Integer
 from elasticsearch_dsl.connections import connections
-connections.create_connection(hosts=["http://129.28.122.49:9200/"])
+# connections.create_connection(hosts=["http://129.28.122.49:9200/"])
+connections.create_connection(hosts=["localhost:9200"])
 
 
 # 注意集成DocType
@@ -20,6 +21,7 @@ class ArticleType(DocType):
     content_type = Keyword()
     publish_id = Keyword()
     thing_type_id = Keyword()
+    source = Keyword()
 
     class Meta:
         index = "gov_spiders"
