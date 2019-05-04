@@ -26,7 +26,6 @@ class SiChuanSpider(scrapy.Spider):
 
     # times=4是最近3个月的, 6是时间的类型,本来打算从2018年的5月1号开始爬, 再久远的数据不要了. 感觉不需要
     def start_requests(self):
-
         yield scrapy.Request(url='http://58.87.81.13/Info/GetInfoListNew?keywords=&times=4&page=1', headers=self.headers)
 
     #
